@@ -1,0 +1,33 @@
+
+<br />
+<div class="container">
+    <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+            <button class="btn btn-primary btn-lg btn-block " name="nazad" (click)="nazad()">Nazad</button>
+            <div *ngIf="atm">
+                <br/>
+                <h5 class="text-center">Detalji bankomata : {{atm.id}}</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Redni broj</th>
+                            <th scope="col">Vrsta bankomata</th>
+                            <th scope="col">Adresa bankomata</th>
+                            <th scope="col">KoridinataE</th>
+                            <th scope="col">KoridinataN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{atm.id}}</td>
+                            <td>{{atm.vrsta}}</td>
+                            <td>{{atm.adresaBankomata}}</td>
+                            <td>{{atm.koridinataE}}</td>
+                            <td>{{atm.kordinataN}}</td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

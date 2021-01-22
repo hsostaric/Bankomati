@@ -1,0 +1,44 @@
+<div id="novi bankomat">
+
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form (submit)="odradiOperaciju()" [formGroup]="form" id="novibankomat" class="form" method="post">
+                        <h3 *ngIf='isAddMode' class="text-center text-info pt-5">Novi bankomat</h3>
+                        <h3 *ngIf='!isAddMode' class="text-center text-info pt-5">Uredi bankomat</h3>
+                        <div class="form-group">
+                            <label for="vrsta" class="text-info">Vrsta bankomata:</label><br>
+                            <select required formControlName="vrsta" name="vrsta" class="form-control" id="vrsta">
+                                <option  value="-" selected>-</option>
+                                <option *ngFor="let vrsta of vrste;" [ngValue]="vrsta" >{{vrsta}}</option>
+                            </select>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="adresa" class="text-info">Adresa banomata:</label><br>
+                            <input formControlName="adresaBankomata"   required="true" type="text" name="adresaBankomata"
+                                id="adresaBankomata" class="form-control">
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="koridinataE" class="text-info">Kordinata E:</label><br>
+                            <input formControlName="koridinataE"  required="true" type="text" name="koridinataE"
+                                id="koridinataE" class="form-control">
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="koridnataN" class="text-info">Kordinata N:</label><br>
+                            <input formControlName="kordinataN"  required="true" type="text" name="kordinataN"
+                                id="kordinataN" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input *ngIf="isAddMode" type="submit" name="unesiBankomat" class="btn btn-info btn-md" value="Unos">
+                            <input *ngIf="!isAddMode" type="submit" name="unesiBankomat" class="btn btn-info btn-md" value="Uredi">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

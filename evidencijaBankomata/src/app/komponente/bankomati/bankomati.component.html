@@ -1,0 +1,59 @@
+<div >
+    <div class="container">
+        <form method="GET" [formGroup]="bankomatiForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label for="tip">Tip bankomata</label>
+                <select formControlName="vrsta" name="tip" (change)="onChange($event)" class="form-control" id="tip">
+                    <option selected value="-">-</option>
+                    <option *ngFor="let vrsta of vrste" [value]="vrsta">{{vrsta}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="adresa">Adresa</label>
+                <input formControlName="adresa" type="text" class="form-control" id="adresa" name="adresa" />
+            </div>
+
+            <div class="form-group">
+                <button  class="btn btn-danger">Pretrazi</button>
+            </div>
+            <div class="form-group">
+                <button type="button"  class="btn btn-primary " [routerLink]="['/novi']" >Novi</button>
+            </div>
+            <div *ngIf='atms.length; else nemaATMA'>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Redni broj</th>
+                            <th scope="col">Vrsta bankomata</th>
+                            <th scope="col">Adresa bankomata</th>
+                            <th scope="col">KoridinataE</th>
+                            <th scope="col">KoridinataN</th>
+                            <th scope="col">Detalji</th>
+                            <th scope="col">Briši</th>
+                            <th scope="col">Ažuriraj</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let atm of atms">
+                            <td>{{atm.id}}</td>
+                            <td>{{atm.vrsta}}</td>
+                            <td>{{atm.adresaBankomata}}</td>
+                            <td>{{atm.koridinataE}}</td>
+                            <td>{{atm.kordinataN}}</td>
+                            <td><button type="button" class="btn btn-info" [routerLink]="['/detail',atm.id] ">Detalji</button></td>
+                            <td><button type="button" class="btn btn-warning" (click)="obrisi(atm)">Briši</button></td>
+                            <td><button type="button" class="btn btn-primary" [routerLink]="['/edit',atm.id]">Ažuriraj</button></td>
+                        </tr>
+                </table>
+            </div>
+            <ng-template #nemaATMA>
+                <p class="alert alert-danger">Trenutno nema bankomata u sustavu !</p>
+            </ng-template>
+            <br/>
+            
+        </form>
+
+    </div>
+
+</div>
